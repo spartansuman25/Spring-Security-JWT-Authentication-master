@@ -40,7 +40,7 @@ public class AuthController {
         user = userRepo.save(user);
 
         // Generating JWT
-        String token = jwtUtil.generateToken(user.getUsername());
+        String token = jwtUtil.generateToken(user.getEmail());
 
         // Responding with JWT
         return Collections.singletonMap("jwt-token", token);
@@ -53,14 +53,14 @@ public class AuthController {
             // Creating the Authentication Token which will contain the credentials for authenticating
             // This token is used as input to the authentication process
             UsernamePasswordAuthenticationToken authInputToken =
-                    new UsernamePasswordAuthenticationToken(body.getUsername(), body.getPassword());
+                    new UsernamePasswordAuthenticationToken(body.getEmail(), body.getPassword());
 
             // Authenticating the Login Credentials
             authManager.authenticate(authInputToken);
 
             // If this point is reached it means Authentication was successful
             // Generate the JWT
-            String token = jwtUtil.generateToken(body.getUsername());
+            String token = jwtUtil.generateToken(body.getEmail());
 
             // Respond with the JWT
             return Collections.singletonMap("jwt-token", token);

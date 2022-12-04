@@ -39,14 +39,14 @@ public class JWTFilter extends OncePerRequestFilter {
             }else {
                 try{
                     // Verify token and extract username
-                    String username = jwtUtil.validateTokenAndRetrieveSubject(jwt);
+                    String email = jwtUtil.validateTokenAndRetrieveSubject(jwt);
 
                     // Fetch User Details
-                    UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                    UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
                     // Create Authentication Token
                     UsernamePasswordAuthenticationToken authToken =
-                            new UsernamePasswordAuthenticationToken(username, userDetails.getPassword(), userDetails.getAuthorities());
+                            new UsernamePasswordAuthenticationToken(email, userDetails.getPassword(), userDetails.getAuthorities());
 
                     // Setting the authentication on the Security Context using the created token
                     if(SecurityContextHolder.getContext().getAuthentication() == null){

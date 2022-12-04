@@ -9,7 +9,7 @@ import lombok.*;
 @ToString // Defines a meaningful toString implementation of this class
 public class LoginCredentials {
 
-    private String username;
+    private String email;
     private String password;
 
 }

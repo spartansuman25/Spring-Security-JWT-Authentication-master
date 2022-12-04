@@ -22,7 +22,7 @@ public class UserController {
         // Retrieve username from the Security Context
         String username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         // Fetch and return user details
-        return userRepo.findByusername(username).get();
+        return userRepo.findByEmail(username).get();
     }
 
 

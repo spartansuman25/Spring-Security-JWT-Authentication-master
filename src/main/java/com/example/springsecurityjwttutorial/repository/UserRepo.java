@@ -9,5 +9,5 @@ import java.util.Optional;
 // that helps us to work with the User entity
 public interface UserRepo extends JpaRepository<User, Long> {
     // Defines a custom method to find a User using the username attribute
-    public Optional<User> findByusername(String username);
+    public Optional<User> findByEmail(String email);
 }

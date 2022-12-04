@@ -22,7 +22,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO) // The "id" field is to be generated automatically
     private Long id;
 
-    private String username;
+    private String email;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
